@@ -8,10 +8,11 @@ namespace Restaurant2.Classes
         Chicken,
         Egg,
         Tea,
-        CocaCola,
+        Cola,
         Milk,
         Coffee,
         Water,
+        Mojito,
         NoDrink
     }
 }
