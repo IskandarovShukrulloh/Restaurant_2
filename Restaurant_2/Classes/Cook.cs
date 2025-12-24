@@ -27,7 +27,10 @@ namespace Restaurant_2.Classes
         {
             try
             {
-                ChickenOrder chicken = new(this._chickenQty);
+                if (_chickenQty == 0)
+                    return "";
+
+                ChickenOrder chicken = new(_chickenQty);
 
                 for (int i = 0; i < chicken.GetQuantity(); i++)
                 {
@@ -47,7 +50,10 @@ namespace Restaurant_2.Classes
         {
             try
             {
-                EggOrder egg = new(this._eggQty);
+                if (_eggQty == 0)
+                    return "";
+
+                EggOrder egg = new(_eggQty);
 
                 int eggQuality = egg.GetQuality();
                 egg.Crack();

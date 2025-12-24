@@ -21,7 +21,7 @@ namespace Restaurant_2
             try
             {
                 // which drink is selected
-                MenuItems? selectedDrink = MenuItems.NoDrink;
+                MenuItems? selectedDrink;
 
                 // string to enum 
                 if (DrinkTextBox.SelectedValue.ToString() == "Tea")
@@ -65,7 +65,14 @@ namespace Restaurant_2
 
         private void ServeFoodButton_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                ResultTextBox.Text = server.Serve();
+            }
+            catch (Exception ex)
+            {
+                ResultTextBox.Text += ex.Message + "\n";
+            }
         }
     }
 }

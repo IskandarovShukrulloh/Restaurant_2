@@ -47,7 +47,6 @@ namespace Restaurant_2.Classes
                 if (drink.HasValue)
                 {
                     tableOrders[_customerCount - 1][chickenQty + eggQty] = drink.Value;
-                }
 
                 return $"Customer {_customerCount} ordered: {chickenQty} chicken, {eggQty} egg, {drink}\n";
             }
@@ -58,6 +57,8 @@ namespace Restaurant_2.Classes
             /* Here sending to Cook logic
              *   Cook's Submit() & Prepare() for both chicken & egg are called  
              */
+            if(_sent)
+                throw new Exception("Orders have already been sent to cook!\n");
 
             if (_customerCount == 0)
                 throw new Exception ("No orders to send to cook!\n");
@@ -72,7 +73,7 @@ namespace Restaurant_2.Classes
             return res;
         }
 
-        public void Serve()
+        public string Serve()
         {
             /* Forming outputs here, like:
              *  Customer 0 is served 3 chicken, 3 egg, Milk*/
