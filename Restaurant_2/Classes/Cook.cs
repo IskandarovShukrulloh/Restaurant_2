@@ -26,7 +26,7 @@ namespace Restaurant_2.Classes
         public string SubmitChicken()
         {
             try
-            {
+            { 
                 if (_chickenQty == 0)
                     return "";
 
@@ -58,21 +58,22 @@ namespace Restaurant_2.Classes
                 int eggQuality = egg.GetQuality();
                 egg.Crack();
 
+                /* Discard all eggs before cooking */
                 for (int i = 0; i < egg.GetQuantity(); i++)
-        {
+                {
                     egg.Discard();
                 }
 
                 egg.Cook();
+                
 
                 return $"Eggs inspected, discarded and Cooked at once!" +
                         $"\nEgg quality: {eggQuality}";
-        }
+            }
             catch
-        {
+            {
                 throw new Exception("Error ocurried while inspecting egg\n");
             }
-
         }
     }
 }

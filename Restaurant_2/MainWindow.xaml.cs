@@ -40,6 +40,7 @@ namespace Restaurant_2
                     selectedDrink = null;
 
                 /* Get order from UI and send to Server */
+                ResultTextBox.Text = "";
                 ResultTextBox.Text += server.ReceiveOrder(int.Parse(EggQtyTextBox.Text),
                                                           int.Parse(ChickenQtyTextBox.Text),
                                                           selectedDrink);
@@ -53,6 +54,9 @@ namespace Restaurant_2
         {
             try
             {
+                if (int.Parse(EggQtyTextBox.Text) <= 0 && int.Parse(ChickenQtyTextBox.Text) <= 0)
+                    throw new Exception("No orders to send to Cook.\n");
+
                 ResultTextBox.Text = "Sending orders to Cook...\n";
                 ResultTextBox.Text += server.SendToCook();
             }
