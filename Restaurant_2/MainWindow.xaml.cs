@@ -54,7 +54,7 @@ namespace Restaurant_2
             try
             {
                 ResultTextBox.Text = "Sending orders to Cook...\n";
-                server.SendToCook();
+                ResultTextBox.Text += server.SendToCook();
             }
             catch (Exception ex)
             {

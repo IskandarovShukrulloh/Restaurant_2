@@ -16,6 +16,6 @@ namespace Restaurant_2.Classes
         public int GetQuality() => rand.Next(25, 101); // Quality between 25 and 100
 
         public void Crack() { /* Rotten eggs will be ignored this time */ }
-        public void Discard() { }
+        public void Discard() { /* Discard every egg before cook all of them */ }
     }
 }

@@ -53,14 +53,23 @@ namespace Restaurant_2.Classes
             }
         }
 
-        public void SendToCook()
+        public string SendToCook()
         {
             /* Here sending to Cook logic
              *   Cook's Submit() & Prepare() for both chicken & egg are called  
              */
+
             if (_customerCount == 0)
                 throw new Exception ("No orders to send to cook!\n");
 
+            string res = "";
+
+            Cook cook = new(this.tableOrders);
+
+            res += cook.SubmitChicken();
+            res += cook.SubmitEgg() + "\n";
+
+            return res;
         }
 
         public void Serve()
