@@ -14,8 +14,8 @@ namespace Restaurant_2.Classes
             this.quantity = quantity;
         }
 
-        public virtual int GetQuantity() => quantity;
+        protected int GetQuantity() => quantity;
 
-        public virtual void Cook() { /* Cooking logic here*/ }
+        protected void Cook() { /* Cooking logic here*/ }
     }
 }
