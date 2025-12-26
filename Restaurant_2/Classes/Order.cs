@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Restaurant_2.Classes
+﻿namespace Restaurant_2.Classes
 {
     public class Order
     {
-        protected int quantity;
-        public Order(int quantity) 
+        protected int _quantity;
+
+        public Order(int quantity)
         {
-            this.quantity = quantity;
+            _quantity = quantity;
         }
 
-        protected int GetQuantity() => quantity;
+        public int GetQuantity()
+        {
+            return _quantity;
+        }
 
-        protected void Cook() { /* Cooking logic here*/ }
+        public void Cook()
+        {
+            // Cooking logic here
+        }
     }
 }

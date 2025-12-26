@@ -1,24 +1,34 @@
-﻿using Restaurant2.Classes;
+﻿using Restaurant_2.Classes;
+using Restaurant2.Classes;
 
 namespace Restaurant_2.Classes
 {
     public class Cook
     {
-        private int _chickenQty = 0;
-        private int _eggQty = 0;
+        private int _chickenQuantity;
+        private int _eggQuantity;
 
         public Cook(MenuItems[][] tableOrders)
         {
             for (int i = 0; i < tableOrders.Length; i++)
             {
                 if (tableOrders[i] == null)
+                {
                     break;
+                }
 
                 MenuItems[] items = tableOrders[i];
+
                 foreach (MenuItems item in items)
                 {
-                    if (item == MenuItems.Chicken) _chickenQty++;
-                    else if (item == MenuItems.Egg) _eggQty++;
+                    if (item == MenuItems.Chicken)
+                    {
+                        _chickenQuantity++;
+                    }
+                    else if (item == MenuItems.Egg)
+                    {
+                        _eggQuantity++;
+                    }
                 }
             }
         }
@@ -26,11 +36,13 @@ namespace Restaurant_2.Classes
         public string SubmitChicken()
         {
             try
-            { 
-                if (_chickenQty == 0)
-                    return "";
+            {
+                if (_chickenQuantity == 0)
+                {
+                    return string.Empty;
+                }
 
-                ChickenOrder chicken = new(_chickenQty);
+                ChickenOrder chicken = new ChickenOrder(_chickenQuantity);
 
                 for (int i = 0; i < chicken.GetQuantity(); i++)
                 {
@@ -39,40 +51,43 @@ namespace Restaurant_2.Classes
 
                 chicken.Cook();
 
-                return "Chicken Cut up and cooked! \n";
+                return "Chicken cut up and cooked!\n";
             }
-
-            catch {
-                throw new Exception("Error ocurried cutting up chicken");
+            catch
+            {
+                throw new Exception("Error occurred while cutting up chicken.");
             }
         }
+
         public string SubmitEgg()
         {
             try
             {
-                if (_eggQty == 0)
-                    return "";
+                if (_eggQuantity == 0)
+                {
+                    return string.Empty;
+                }
 
-                EggOrder egg = new(_eggQty);
+                EggOrder egg = new EggOrder(_eggQuantity);
 
                 int eggQuality = egg.GetQuality();
                 egg.Crack();
 
-                /* Discard all eggs before cooking */
+                // Discard all eggs before cooking
                 for (int i = 0; i < egg.GetQuantity(); i++)
                 {
                     egg.Discard();
                 }
 
                 egg.Cook();
-                
 
-                return $"Eggs inspected, discarded and Cooked at once!" +
-                        $"\nEgg quality: {eggQuality}";
+                return
+                    "Eggs inspected, discarded and cooked at once!" +
+                    $"\nEgg quality: {eggQuality}";
             }
             catch
             {
-                throw new Exception("Error ocurried while inspecting egg\n");
+                throw new Exception("Error occurred while inspecting eggs.\n");
             }
         }
     }

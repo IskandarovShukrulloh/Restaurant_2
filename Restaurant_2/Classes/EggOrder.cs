@@ -1,21 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Restaurant_2.Classes
+﻿namespace Restaurant_2.Classes
 {
     internal class EggOrder : Order
     {
-        Random rand = new Random();
-        public EggOrder(int quantity) : base(quantity)
+        private static readonly Random RandomGenerator = new Random();
+
+        public EggOrder(int quantity)
+            : base(quantity)
         {
-
         }
-        public int GetQuality() => rand.Next(25, 101); // Quality between 25 and 100
 
-        public void Crack() { /* Rotten eggs will be ignored this time */ }
-        public void Discard() { /* Discard every egg before cook all of them */ }
+        // Returns egg quality between 25 and 100
+        public int GetQuality()
+        {
+            return RandomGenerator.Next(25, 101);
+        }
+
+        public void Crack()
+        {
+            // Rotten eggs are ignored in this version
+        }
+
+        public void Discard()
+        {
+            // Discard each egg before cooking
+        }
     }
 }
